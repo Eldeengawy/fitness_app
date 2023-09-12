@@ -51,7 +51,7 @@ class RegisterScreen extends StatelessWidget {
                     },
                     hint: 'Full Name',
                   ),
-                  20.ph, // Use, ScreenUtil for SizedBox
+                  20.ph,
                   CustomTextFormField(
                     controller: RegisterCubit.get(context).emailController,
                     prefix: Icons.email,
@@ -64,7 +64,7 @@ class RegisterScreen extends StatelessWidget {
                     },
                     hint: 'Email',
                   ),
-                  20.ph, // Use ScreenUtil for SizedBox
+                  20.ph,
                   CustomTextFormField(
                     controller: RegisterCubit.get(context).passwordController,
                     isPassword: true,

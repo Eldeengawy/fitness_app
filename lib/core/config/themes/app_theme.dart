@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Define a static method to get the theme data
   static ThemeData getTheme() {
     return ThemeData(
       primaryColor: AppColors.primaryColor,
@@ -15,7 +14,6 @@ class AppTheme {
       textTheme: GoogleFonts.montserratTextTheme().copyWith(
         bodyMedium: const TextStyle(color: AppColors.textColor),
       ),
-
       iconTheme: const IconThemeData(color: AppColors.iconColor),
       brightness: Brightness.dark,
       useMaterial3: true,
@@ -34,7 +32,6 @@ class AppTheme {
           ),
         ),
       ),
-      // Additional Theme Customizations
     );
   }
 }

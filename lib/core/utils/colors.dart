@@ -11,7 +11,6 @@ class AppColors {
   static const iconColor = Colors.white;
   static const buttonColor = Colors.blue;
   static const errorColor = Colors.red;
-  // Add more color constants as needed
 
   // Define the color scheme based on the above values
   static const colorScheme = ColorScheme(
