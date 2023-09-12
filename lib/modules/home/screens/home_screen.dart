@@ -30,14 +30,34 @@ class HomePage extends StatelessWidget {
                       children: [
                         20.ph,
                         const CustomSearchWidget(),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: state.exercises!.length,
-                            itemBuilder: (context, index) =>
-                                CustomExerciseWidget(
-                                    exercise: state.exercises![index]),
-                          ),
-                        ),
+                        Expanded(child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            if (constraints.maxWidth > 948) {
+                              // Display GridView when screen width is greater than the threshold
+                              return GridView.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount:
+                                      2, // Set the number of columns
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 20,
+                                ),
+                                itemCount: state.exercises!.length,
+                                itemBuilder: (context, index) =>
+                                    CustomExerciseWidget(
+                                        exercise: state.exercises![index]),
+                              );
+                            } else {
+                              // Display ListView when screen width is smaller than the threshold
+                              return ListView.builder(
+                                itemCount: state.exercises!.length,
+                                itemBuilder: (context, index) =>
+                                    CustomExerciseWidget(
+                                        exercise: state.exercises![index]),
+                              );
+                            }
+                          },
+                        )),
                       ],
                     ),
                   ),

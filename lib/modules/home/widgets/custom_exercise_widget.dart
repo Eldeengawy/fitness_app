@@ -78,9 +78,9 @@ class PausedWidget extends StatelessWidget {
                     left: 20.0.w,
                     child: Text(
                       exercise.title ?? '',
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24.0,
+                        fontSize: 20.0.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
