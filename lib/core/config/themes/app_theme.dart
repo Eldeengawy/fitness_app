@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
@@ -27,9 +28,9 @@ class AppTheme {
           backgroundColor: AppColors.primaryColor,
           foregroundColor: AppColors.black,
           textStyle: GoogleFonts.montserrat(
-            color: AppColors.black,
-            fontWeight: FontWeight.bold,
-          ),
+              color: AppColors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 14.sp),
         ),
       ),
     );

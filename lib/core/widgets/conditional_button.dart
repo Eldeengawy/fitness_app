@@ -19,15 +19,20 @@ class ConditionalButton extends StatelessWidget {
     return ConditionalBuilder(
       condition: condition,
       builder: (context) => ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 16.h),
-        ),
-        child: Text(
-          buttonText,
-          style: TextStyle(fontSize: 18.sp),
-        ),
-      ),
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(vertical: 16.h),
+          ),
+          child: FittedBox(
+            fit: BoxFit
+                .scaleDown, // Scale the text down to fit the available space
+            child: Text(
+              buttonText,
+              style: TextStyle(
+                fontSize: 20.sp, // Adjust the factor as needed
+              ),
+            ),
+          )),
       fallback: (context) => const Center(child: CircularProgressIndicator()),
     );
   }

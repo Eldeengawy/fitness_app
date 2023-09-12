@@ -35,72 +35,79 @@ class RegisterScreen extends StatelessWidget {
             padding: EdgeInsets.all(20.w),
             child: Form(
               key: RegisterCubit.get(context).formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CustomTextFormField(
-                    controller: RegisterCubit.get(context).fullNameController,
-                    prefix: Icons.person,
-                    type: TextInputType.name,
-                    validate: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your full name';
-                      }
-                      return null;
-                    },
-                    hint: 'Full Name',
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CustomTextFormField(
+                        controller:
+                            RegisterCubit.get(context).fullNameController,
+                        prefix: Icons.person,
+                        type: TextInputType.name,
+                        validate: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your full name';
+                          }
+                          return null;
+                        },
+                        hint: 'Full Name',
+                      ),
+                      20.ph,
+                      CustomTextFormField(
+                        controller: RegisterCubit.get(context).emailController,
+                        prefix: Icons.email,
+                        type: TextInputType.emailAddress,
+                        validate: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email address';
+                          }
+                          return null;
+                        },
+                        hint: 'Email',
+                      ),
+                      20.ph,
+                      CustomTextFormField(
+                        controller:
+                            RegisterCubit.get(context).passwordController,
+                        isPassword: true,
+                        prefix: Icons.lock,
+                        type: TextInputType.visiblePassword,
+                        validate: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter valid password';
+                          }
+                          return null;
+                        },
+                        hint: 'Password',
+                      ),
+                      20.ph,
+                      ConditionalButton(
+                        condition: state is! RegisterLoadingState,
+                        onPressed: () {
+                          if (RegisterCubit.get(context)
+                              .formKey
+                              .currentState!
+                              .validate()) {
+                            RegisterCubit.get(context).register(
+                              fullName: RegisterCubit.get(context)
+                                  .fullNameController
+                                  .text,
+                              email: RegisterCubit.get(context)
+                                  .emailController
+                                  .text,
+                              password: RegisterCubit.get(context)
+                                  .passwordController
+                                  .text,
+                            );
+                          }
+                        },
+                        buttonText: 'Register',
+                      ),
+                    ],
                   ),
-                  20.ph,
-                  CustomTextFormField(
-                    controller: RegisterCubit.get(context).emailController,
-                    prefix: Icons.email,
-                    type: TextInputType.emailAddress,
-                    validate: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email address';
-                      }
-                      return null;
-                    },
-                    hint: 'Email',
-                  ),
-                  20.ph,
-                  CustomTextFormField(
-                    controller: RegisterCubit.get(context).passwordController,
-                    isPassword: true,
-                    prefix: Icons.lock,
-                    type: TextInputType.visiblePassword,
-                    validate: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter valid password';
-                      }
-                      return null;
-                    },
-                    hint: 'Password',
-                  ),
-                  20.ph,
-                  ConditionalButton(
-                    condition: state is! RegisterLoadingState,
-                    onPressed: () {
-                      if (RegisterCubit.get(context)
-                          .formKey
-                          .currentState!
-                          .validate()) {
-                        RegisterCubit.get(context).register(
-                          fullName: RegisterCubit.get(context)
-                              .fullNameController
-                              .text,
-                          email:
-                              RegisterCubit.get(context).emailController.text,
-                          password: RegisterCubit.get(context)
-                              .passwordController
-                              .text,
-                        );
-                      }
-                    },
-                    buttonText: 'Register',
-                  ),
-                ],
+                ),
               ),
             ),
           ),
